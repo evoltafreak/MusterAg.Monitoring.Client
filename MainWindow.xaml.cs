@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
 using MusterAg.Monitoring.Client.Model;
+using MusterAg.Monitoring.Client.View;
 
 namespace MusterAg.Monitoring.Client
 {
@@ -10,7 +10,8 @@ namespace MusterAg.Monitoring.Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainViewModel mainViewModel;
+        private MainViewModel mainViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -22,12 +23,11 @@ namespace MusterAg.Monitoring.Client
         {
             try
             {
-                List<Log> logList = mainViewModel.ReadLogList();
-                DataGrid.ItemsSource = logList;
+                mainViewModel.ReadLogList();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Es ist ein Fehler aufgetreten: " + ex.Message);
+                MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
 
@@ -35,13 +35,46 @@ namespace MusterAg.Monitoring.Client
         {
             try
             {
-                List<Log> logList = (List<Log>) DataGrid.ItemsSource;
-                // TODO: include selected id
-                //mainViewModel.ClearLog(1, logList);
+                if (DataGrid.SelectedItem != null)
+                {
+                    Log log = (Log) DataGrid.SelectedItem;
+                    mainViewModel.ClearLog(log.IdPod);
+                    mainViewModel.ReadLogList();
+                }
+                else
+                {
+                    MessageBox.Show("Bitte wählen Sie eine Zeile aus.", "Auswahl fehlgeschlagen");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Es ist ein Fehler aufgetreten: " + ex.Message);
+                MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
+            }
+        }
+
+        private void AddLog(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LogWindow logWindow = new LogWindow(mainViewModel.ConnectionString);
+                logWindow.Closed += ReloadData;
+                logWindow.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
+            }
+        }
+
+        private void ReloadData(object sender, EventArgs e)
+        {
+            try
+            {
+                mainViewModel.ReadLogList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
     }

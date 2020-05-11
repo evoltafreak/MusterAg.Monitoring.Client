@@ -10,4 +10,16 @@
       <PackageReference Include="MySql.Data" Version="8.0.20" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Page Update="View\LogWindow.xaml">
+        <Generator></Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="View\LogWindow.xaml.cs">
+        <DependentUpon>LogWindow.xaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

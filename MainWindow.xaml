@@ -4,15 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="330" Width="562">
-    <Grid Height="298" VerticalAlignment="Top">
-        <TextBox x:Name="TxtConnectionString" HorizontalAlignment="Left" Margin="164,15,0,0" Text="{Binding ConnectionString}" TextWrapping="Wrap" VerticalAlignment="Top" Width="384"/>
-        <Label x:Name="LblConnectionString" Content="Datenbankverbindung" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LblLog" Content="Unquittierte Logeinträge" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="BtnLoadData" Content="Load" HorizontalAlignment="Left" Margin="164,44,0,0" VerticalAlignment="Top" Click="LoadData"/>
-        <DataGrid x:Name="DataGrid" ItemsSource="{Binding LogList}" HorizontalAlignment="Center" Height="192" Margin="0,72,0,0" VerticalAlignment="Top" Width="533">
+        Title="Muster AG Monitoring" SizeToContent="Height" Width="600">
+    <Grid x:Name="GridMain">
+
+        <!-- Grid Definitions -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Content -->
+        <Label x:Name="LblConnectionString" Content="Datenbankverbindung:" Grid.Row="0" Grid.Column="0"
+               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="TxtConnectionString" Grid.Row="0" Grid.Column="1" Text="{Binding ConnectionString}"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Margin="10,10,10,0" />
+        <DataGrid x:Name="DataGrid" ItemsSource="{Binding LogList}" IsReadOnly="True" AutoGenerateColumns="False"
+                  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                  Margin="10,10,10,0" Height="300px" VerticalScrollBarVisibility="Visible">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="ID" Binding="{Binding IdPod}" />
                 <DataGridTextColumn Header="Pod" Binding="{Binding Pod}" />
                 <DataGridTextColumn Header="Location" Binding="{Binding Location}" />
                 <DataGridTextColumn Header="Hostname" Binding="{Binding Hostname}" />
@@ -21,7 +37,16 @@
                 <DataGridTextColumn Header="Message" Binding="{Binding Message}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="BtnClearLog" Content="Confirm" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Click="ClearLog"/>
-
+        
+        <!-- Actions -->
+        <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="BtnLoadData" Content="Logs laden" Click="LoadData"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" /> 
+            <Button x:Name="BtnClearLog" Content="Logs löschen" Click="ClearLog" 
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+            <Button x:Name="BtnAddLog" Content="Log hinzufügen" Click="AddLog"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+        </WrapPanel>
+        
     </Grid>
 </Window>

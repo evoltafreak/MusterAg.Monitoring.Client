@@ -2,6 +2,6 @@
 {
     public enum Severity
     {
-        FATAL, ERROR, WARN, INFO, DEBUG, TRACE
+        NOT_SET, FATAL, ERROR, WARN, INFO, DEBUG, TRACE
     }
 }

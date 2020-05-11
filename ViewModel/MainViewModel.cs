@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Configuration;
 using MusterAg.Monitoring.Client.Model;
@@ -9,35 +9,41 @@ namespace MusterAg.Monitoring.Client
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        public string ConnectionString { get; set; }
-        public List<Log> LogList { get; set; }
+        public string connectionString;
+        public string ConnectionString
+        {
+            get
+            {
+                return connectionString;
+            }
+            set
+            {
+                connectionString = value;
+                _logRepository.ConnectionString = value;
+            }
+        }
 
-        private LogRepository _logRepository;
+        public ObservableCollection<Log> LogList { get; set; }
+
+        private readonly LogRepository _logRepository;
 
         public MainViewModel()
         {
+            _logRepository = new LogRepository(connectionString);
             ConnectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
-            _logRepository = new LogRepository();
         }
         
-        public List<Log> ReadLogList()
+        public void ReadLogList()
         {
-            LogList = _logRepository.ReadLogList(ConnectionString);
-            Update();
-            return LogList;
+            LogList = new ObservableCollection<Log>(_logRepository.ReadLogList());
+            OnPropertyChanged(this, nameof(LogList));
         }
 
         public void ClearLog(long id)
         {
-            _logRepository.ClearLog(ConnectionString, id, LogList);
-            Update();
+            _logRepository.ClearLog(id);
         }
 
-        private void Update()
-        {
-            OnPropertyChanged(this, nameof(ConnectionString));
-        }
-        
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(Object sender, string propertyName)
         {
