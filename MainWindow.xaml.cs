@@ -77,5 +77,25 @@ namespace MusterAg.Monitoring.Client
                 MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
+
+        private void FindDuplicates(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (mainViewModel.LogList != null)
+                {
+                    string message = mainViewModel.FindDuplicates();
+                    MessageBox.Show(message, "Duplikate");
+                }
+                else
+                {
+                    MessageBox.Show("Laden Sie zuerst die Daten.", "Daten laden");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
+            }
+        }
     }
 }

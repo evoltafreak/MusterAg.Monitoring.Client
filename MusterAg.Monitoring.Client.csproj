@@ -11,6 +11,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Reference Include="DuplicateCheckerLib">
+        <HintPath>Lib\DuplicateCheckerLib.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
       <Page Update="View\LogWindow.xaml">
         <Generator></Generator>
       </Page>

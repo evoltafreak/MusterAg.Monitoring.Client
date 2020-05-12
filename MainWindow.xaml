@@ -42,9 +42,11 @@
         <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,10">
             <Button x:Name="BtnLoadData" Content="Logs laden" Click="LoadData"
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" /> 
-            <Button x:Name="BtnClearLog" Content="Logs löschen" Click="ClearLog" 
+            <Button x:Name="BtnClearLog" Content="Log löschen" Click="ClearLog" 
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
             <Button x:Name="BtnAddLog" Content="Log hinzufügen" Click="AddLog"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+            <Button x:Name="BtnFindDuplicates" Content="Duplikate finden" Click="FindDuplicates"
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
         </WrapPanel>
         

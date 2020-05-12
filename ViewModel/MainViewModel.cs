@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Configuration;
+using DuplicateCheckerLib;
 using MusterAg.Monitoring.Client.Model;
 using MusterAg.Monitoring.Client.Repository;
 
@@ -42,6 +44,21 @@ namespace MusterAg.Monitoring.Client
         public void ClearLog(long id)
         {
             _logRepository.ClearLog(id);
+        }
+        
+        public string FindDuplicates()
+        {
+            string message = "";
+            DuplicateChecker duplicateChecker = new DuplicateChecker();
+            IEnumerable<Log> logEnumerable = LogList;
+            List<Log> list =  new List<Log>(logEnumerable);
+            var duplicateList = duplicateChecker.FindDuplicates(list);
+            foreach(Log log in duplicateList)
+            {
+                message += log.ToString() + "\n";
+            }
+
+            return message;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
