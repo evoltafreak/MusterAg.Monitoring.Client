@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class LogRepository : BaseRepository
+    public class LogRepository : BaseRepository<Log>
     {
         public LogRepository(string connectionString)
         {
@@ -81,5 +81,8 @@ namespace MusterAg.Monitoring.Client.Repository
                 }
             }
         }
+        
+        public override string TableName => "Log";
+        
     }
 }

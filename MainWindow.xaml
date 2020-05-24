@@ -48,6 +48,8 @@
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
             <Button x:Name="BtnFindDuplicates" Content="Duplikate finden" Click="FindDuplicates"
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+            <Button x:Name="BtnShowAllLocation" Content="Alle Standorte anzeigen" Click="ShowAllLocation"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
         </WrapPanel>
         
     </Grid>

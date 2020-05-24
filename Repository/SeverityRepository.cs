@@ -5,7 +5,7 @@ using MySql.Data.MySqlClient;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class SeverityRepository : BaseRepository
+    public class SeverityRepository : BaseRepository<Severity>
     {
         public SeverityRepository(string connectionString)
         {
@@ -33,6 +33,8 @@ namespace MusterAg.Monitoring.Client.Repository
 
             return severityList;
         }
+        
+        public override string TableName => "Severity";
         
     }
 }

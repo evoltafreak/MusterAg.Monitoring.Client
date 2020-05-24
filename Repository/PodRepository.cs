@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class PodRepository : BaseRepository
+    public class PodRepository : BaseRepository<Pod>
     {
         public PodRepository(string connectionString)
         {
@@ -36,6 +36,8 @@ namespace MusterAg.Monitoring.Client.Repository
 
             return podList;
         }
+        
+        public override string TableName => "Pod";
         
     }
 }

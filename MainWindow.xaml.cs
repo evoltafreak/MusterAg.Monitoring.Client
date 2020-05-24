@@ -97,5 +97,17 @@ namespace MusterAg.Monitoring.Client
                 MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
+
+        private void ShowAllLocation(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string message = mainViewModel.ShowAllLocation();
+                MessageBox.Show(message, "Standorte");
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
+            }
+        }
     }
 }
