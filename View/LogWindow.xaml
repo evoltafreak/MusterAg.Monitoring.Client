@@ -29,7 +29,7 @@
         
         <!-- Actions -->
         <WrapPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,10">
-            <Button x:Name="BtnSave" Content="Save" Click="AddLog" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+            <Button x:Name="BtnSave" Content="Speichern" Click="AddLog" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
         </WrapPanel>
     </Grid>
 </Window>

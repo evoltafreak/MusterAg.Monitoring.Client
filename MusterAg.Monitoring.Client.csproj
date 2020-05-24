@@ -29,4 +29,8 @@
       </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Documentation\Images" />
+    </ItemGroup>
+
 </Project>
