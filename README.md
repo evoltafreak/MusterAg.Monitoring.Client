@@ -5,7 +5,7 @@
 **Install NuGet-Package:** `Install-Package MusterAg.Monitoring.Client`  
 
 ## Versions / Releases
-[2.1.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.0.0) - Testat Generics  
+[2.1.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.1.0) - Testat Generics  
 [2.0.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.0.0) - Testat ObjectEquality  
 [1.0.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/1.0.0) - Testat NuGet  
 
