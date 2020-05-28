@@ -46,6 +46,10 @@ Wenn man diesen Button drückt, werden alle Logeinträge, welches dieselbe `Mess
 Hier werden alle eingetragenen Standorte in einer `MessageBox` angezeigt. Die Anzahl wird ebenfalls visualisiert.
 ![MainWindow_ShowAllLocation][MainWindow_ShowAllLocation]
 
+**LINQ Checkbox**  
+Durch das Aktivieren der LINQ-Checkbox werden alle Datenbankabfragen via LINQ getätigt.
+Beide Implementierungen liefern jedoch dieselben Resultate zurück.
+
 [MainWindow]: ./Images/MainWindow.png "MainWindow"
 [MainWindow_LoadData]: ./Images/MainWindow_LoadData.png "MainWindow_LoadData"
 [MainWindow_AddLog]: ./Images/MainWindow_AddLog.png "MainWindow_AddLog"
