@@ -8,7 +8,7 @@ namespace MusterAg.Monitoring.Client.Repository
         public string ConnectionString { get; set; }
         public abstract string TableName { get; }
         
-        public long Count() {
+        public virtual long Count() {
             using (var conn = new MySqlConnection(ConnectionString)) {
                 using (var cmd = conn.CreateCommand()) {
                     conn.Open();
@@ -17,37 +17,37 @@ namespace MusterAg.Monitoring.Client.Repository
                 }
             }
         }
-        public M GetSingle<P>(P pkValue)
+        public virtual M GetSingle<P>(P pkValue)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Add(M entity)
+        public virtual void Add(M entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Delete(M entity)
+        public virtual void Delete(M entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Update(M entity)
+        public virtual void Update(M entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<M> GetAll(string whereCondition, Dictionary<string, object> parameterValues)
+        public virtual List<M> GetAll(string whereCondition, Dictionary<string, object> parameterValues)
         {
             throw new System.NotImplementedException();
         }
 
-        public List<M> GetAll()
+        public virtual List<M> GetAll()
         {
             throw new System.NotImplementedException();
         }
 
-        public long Count(string whereCondition, Dictionary<string, object> parameterValues)
+        public virtual long Count(string whereCondition, Dictionary<string, object> parameterValues)
         {
             throw new System.NotImplementedException();
         }

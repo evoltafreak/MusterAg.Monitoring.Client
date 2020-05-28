@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using LinqToDB.Data;
+using MusterAg.Monitoring.Client.Config;
 using MusterAg.Monitoring.Client.Model;
 using MusterAg.Monitoring.Client.View;
 
@@ -15,6 +17,7 @@ namespace MusterAg.Monitoring.Client
         public MainWindow()
         {
             InitializeComponent();
+            DataConnection.DefaultSettings = new DbConfig();
             mainViewModel = new MainViewModel();
             DataContext = mainViewModel;
         }
@@ -56,7 +59,7 @@ namespace MusterAg.Monitoring.Client
         {
             try
             {
-                LogWindow logWindow = new LogWindow(mainViewModel.ConnectionString);
+                LogWindow logWindow = new LogWindow(mainViewModel.ConnectionString, mainViewModel.IsLinq);
                 logWindow.Closed += ReloadData;
                 logWindow.ShowDialog();
             }

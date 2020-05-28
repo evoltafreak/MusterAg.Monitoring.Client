@@ -1,43 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using LinqToDB;
 using MusterAg.Monitoring.Client.Model;
 using MySql.Data.MySqlClient;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class LogRepository : BaseRepository<Log>
+    public class LogLinqRepository : BaseLinqRepository<Log>, ILogRepository
     {
-        public LogRepository(string connectionString)
+        public LogLinqRepository(string connectionString)
         {
             ConnectionString = connectionString;
         }
+
         public List<Log> ReadLogList()
         {
             List<Log> logList = new List<Log>();
-            using (var conn = new MySqlConnection(ConnectionString))
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText =
-                        "SELECT id, pod, location, hostname, severity, timestamp, message FROM v_logentries ORDER BY timestamp";
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Log log = FillLog(reader);
-                            logList.Add(log);
-                        }
-                    }
-                }
-            }
+            using (var ctx = new DataContext("MusterAgDb")) {
 
+                ITable<LogEntity> podTable = ctx.GetTable<LogEntity>();
+                IQueryable<LogEntity> query = podTable;
+                foreach (LogEntity logEntity in query) {
+                    Log pod = new Log(logEntity);
+                    logList.Add(pod);
+                }
+     
+            }
             return logList;
         }
 
+        /**
+         * Executes stored procedure without using LINQ. See https://github.com/linq2db/linq2db/issues/1987
+         */
         public void ClearLog(long id)
         {
+
             using (var conn = new MySqlConnection(ConnectionString))
             {
                 conn.Open();
@@ -51,20 +49,9 @@ namespace MusterAg.Monitoring.Client.Repository
             }
         }
 
-        private Log FillLog(MySqlDataReader reader)
-        {
-            return new Log()
-            {
-                IdPod = reader.GetInt64(0),
-                Pod = reader.GetString(1),
-                Location = reader.GetString(2),
-                Hostname = reader.GetString(3),
-                Severity = (Severity)Enum.Parse(typeof(Severity), reader.GetString(4)),
-                Timestamp = reader.GetDateTime(5),
-                Message = reader.GetString(6)
-            };
-        }
-
+        /**
+         * Executes stored procedure without using LINQ. See https://github.com/linq2db/linq2db/issues/1987
+         */
         public void AddLog(Log log)
         {
             using (var conn = new MySqlConnection(ConnectionString))

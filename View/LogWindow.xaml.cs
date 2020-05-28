@@ -9,10 +9,10 @@ namespace MusterAg.Monitoring.Client.View
     {
         public LogViewModel LogViewModel { get; set; }
 
-        public LogWindow(string connectionString)
+        public LogWindow(string connectionString, bool isLinq)
         {
             InitializeComponent();
-            LogViewModel = new LogViewModel(connectionString);
+            LogViewModel = new LogViewModel(connectionString, isLinq);
             DataContext = LogViewModel;
         }
 

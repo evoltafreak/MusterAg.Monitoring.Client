@@ -23,27 +23,39 @@ namespace MusterAg.Monitoring.Client
         }
         public ObservableCollection<Severity> SeverityList { get; set; }
         public ObservableCollection<Pod> PodList { get; set; }
+        
+        public bool IsLinq { get; set; }
 
-        private readonly LogRepository _logRepository;
-        private readonly SeverityRepository _severityRepository;
-        private readonly PodRepository _podRepository;
+        private readonly ILogRepository _logRepository;
+        private readonly ISeverityRepository _severityRepository;
+        private readonly IPodRepository _podRepository;
 
-        public LogViewModel(string connectionString)
+        public LogViewModel(string connectionString, bool isLinq)
         {
-            _logRepository = new LogRepository(connectionString);
-            _severityRepository = new SeverityRepository(connectionString);
-            _podRepository = new PodRepository(connectionString);
+            IsLinq = isLinq;
+            if (IsLinq)
+            {
+                _logRepository = new LogLinqRepository(connectionString);
+                _severityRepository = new SeverityLinqRepository(connectionString);
+                _podRepository = new PodLinqRepository(connectionString);
+            }
+            else
+            {
+                _logRepository = new LogRepository(connectionString);
+                _severityRepository = new SeverityRepository(connectionString);
+                _podRepository = new PodRepository(connectionString);
+            }
             LoadData();
         }
 
         private void LoadData()
         {
-            ReadLogList();
+            ReadSeverityList();
             ReadPodList();
             Log = new Log();
         }
         
-        public void ReadLogList()
+        public void ReadSeverityList()
         {
             SeverityList = new ObservableCollection<Severity>(_severityRepository.ReadSeverityList());
             OnPropertyChanged(this, nameof(SeverityList));

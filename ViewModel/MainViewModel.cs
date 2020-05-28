@@ -26,15 +26,37 @@ namespace MusterAg.Monitoring.Client
             }
         }
 
+        public bool isLinq;
+        public bool IsLinq
+        {
+            get
+            {
+                return isLinq;
+            }
+            set
+            {
+                isLinq = value;
+                if (isLinq)
+                {
+                    _logRepository = new LogLinqRepository(connectionString);
+                    _locationRepository = new LocationLinqRepository(connectionString);
+                }
+                else
+                {
+                    _logRepository = new LogRepository(connectionString);
+                    _locationRepository = new LocationRepository(connectionString);
+                }
+            }
+        }
+
         public ObservableCollection<Log> LogList { get; set; }
 
-        private readonly LogRepository _logRepository;
-        private readonly LocationRepository _locationRepository;
+        private ILogRepository _logRepository;
+        private ILocationRepository _locationRepository;
 
         public MainViewModel()
         {
-            _logRepository = new LogRepository(connectionString);
-            _locationRepository = new LocationRepository(connectionString);
+            IsLinq = false;
             ConnectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         }
         
@@ -68,7 +90,8 @@ namespace MusterAg.Monitoring.Client
         {
             string message = "";
             message += "Anzahl Standorte: " + _locationRepository.Count() + "\n";
-            List<Location> locationList = _locationRepository.ReadAllLocationList();
+            List<Location> locationList;
+            locationList = _locationRepository.ReadAllLocationList();
             foreach(Location location in locationList)
             {
                 message += location.ToString() + "\n";

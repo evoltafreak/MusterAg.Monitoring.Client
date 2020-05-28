@@ -1,4 +1,5 @@
 ﻿using System;
+using LinqToDB.Mapping;
 
 namespace MusterAg.Monitoring.Client.Model
 {
@@ -8,6 +9,14 @@ namespace MusterAg.Monitoring.Client.Model
         public string Address { get; set; }
         public string AddressNr { get; set; }
         public long FidPlace { get; set; }
+        public Location() {}
+        public Location(LocationEntity locationEntity)
+        {
+            IdLocation = locationEntity.IdLocation;
+            Address = locationEntity.Address;
+            AddressNr = locationEntity.AddressNr;
+            FidPlace = locationEntity.FidPlace;
+        }
 
         protected bool Equals(Location other)
         {
@@ -33,4 +42,18 @@ namespace MusterAg.Monitoring.Client.Model
         }
         
     }
+    
+    [Table("location")]
+    public partial class LocationEntity
+    {
+        [Column("idLocation"), PrimaryKey, NotNull]
+        public long IdLocation { get; set; }
+        [Column("address")]
+        public string Address { get; set; }
+        [Column("addressNr")]
+        public string AddressNr { get; set; }
+        [Column("fidPlace")]
+        public long FidPlace { get; set; }
+    }
+    
 }
