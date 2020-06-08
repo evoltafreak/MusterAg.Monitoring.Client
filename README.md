@@ -13,3 +13,6 @@
 ## MySQL Database Installation
 Navigate to `/Database` and run `generate-sql.bat`. Run the generated `sql.sql` in your SQL CLI or in any other database tool.
 The generated database is called `musterag`.
+
+## MySQL to SQL Server Migration Guide
+**Documentation** [Click here](./Documentation/MySQL_SQLServer_Migration.md)  

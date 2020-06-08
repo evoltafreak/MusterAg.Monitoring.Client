@@ -87,9 +87,9 @@ CREATE TABLE IF NOT EXISTS MUSTERAG.Pod_Logging (
 );
 
 -- Categories
-CREATE TABLE MUSTERAG.categories (
+CREATE TABLE IF NOT EXISTS MUSTERAG.categories (
   idCategories INT NOT NULL AUTO_INCREMENT,
-  description VARCHAR(200) NULL NOT NULL,
+  description VARCHAR(200) NOT NULL,
   PRIMARY KEY (idCategories)
 );
 
