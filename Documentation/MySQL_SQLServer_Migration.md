@@ -9,10 +9,6 @@ SQL Server - 2017 - 14.0.2027.2
 Installieren Sie zuerst das [Tool](https://docs.microsoft.com/en-us/sql/ssma/mysql/sql-server-migration-assistant-for-mysql-mysqltosql?view=sql-server-ver15) `SQL Server Migration Assistant for MySQL (MySQLToSQL)`  
 Bei diesem Migration Guide wird die Version [8.10.0](https://download.microsoft.com/download/2/9/2/29255648-7F68-4E27-B2F2-F20434FBB230/SSMAforMySQL_8.10.0.msi) verwendet.  
 
-### Install SQL Server Migration Assistant for MySQL 
-Installieren Sie zuerst das [Tool](https://docs.microsoft.com/en-us/sql/ssma/mysql/sql-server-migration-assistant-for-mysql-mysqltosql?view=sql-server-ver15) `SQL Server Migration Assistant for MySQL (MySQLToSQL)`  
-Bei diesem Migration Guide wird die Version [8.10.0](https://download.microsoft.com/download/2/9/2/29255648-7F68-4E27-B2F2-F20434FBB230/SSMAforMySQL_8.10.0.msi) verwendet.  
-
 ### Install MySQL ODBC Connector
 Installieren Sie den ODBC Driver mit der Version [8.20.0](https://cdn.mysql.com//Downloads/Connector-ODBC/8.0/mysql-connector-odbc-8.0.20-winx64.msi).
 
