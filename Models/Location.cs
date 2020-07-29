@@ -15,6 +15,7 @@ namespace MusterAg.Monitoring.Client.Models
         public string Address { get; set; }
         public string AddressNr { get; set; }
         public int FidPlace { get; set; }
+        public int Parent { get; set; }
 
         public virtual Place FidPlaceNavigation { get; set; }
         public virtual ICollection<Customer> Customer { get; set; }
@@ -22,7 +23,7 @@ namespace MusterAg.Monitoring.Client.Models
         
         protected bool Equals(Location other)
         {
-            return IdLocation == other.IdLocation && Address == other.Address && AddressNr == other.AddressNr && FidPlace == other.FidPlace;
+            return IdLocation == other.IdLocation && Address == other.Address && AddressNr == other.AddressNr && FidPlace == other.FidPlace && Parent == other.Parent;
         }
 
         public override bool Equals(object obj)
@@ -35,12 +36,12 @@ namespace MusterAg.Monitoring.Client.Models
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(IdLocation, Address, AddressNr, FidPlace);
+            return HashCode.Combine(IdLocation, Address, AddressNr, FidPlace, Parent);
         }
 
         public override string ToString()
         {
-            return $"{nameof(IdLocation)}: {IdLocation}, {nameof(Address)}: {Address}, {nameof(AddressNr)}: {AddressNr}, {nameof(FidPlace)}: {FidPlace}";
+            return $"{nameof(IdLocation)}: {IdLocation}, {nameof(Address)}: {Address}, {nameof(AddressNr)}: {AddressNr}, {nameof(FidPlace)}: {FidPlace}, {nameof(Parent)}: {Parent}";
         }
         
     }

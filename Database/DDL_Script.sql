@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS MUSTERAG.Location (
   address VARCHAR(200) NOT NULL,
   addressNr VARCHAR(10),
   fidPlace INT NOT NULL,
+  parent INT,
   PRIMARY KEY (idLocation),
   CONSTRAINT fk_Location_Place
     FOREIGN KEY (fidPlace)

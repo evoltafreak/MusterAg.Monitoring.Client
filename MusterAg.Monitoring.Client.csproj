@@ -33,11 +33,17 @@
       <Page Update="Log\LogWindow.xaml">
         <Generator></Generator>
       </Page>
+      <Page Update="Location\LocationTreeWindow.xaml">
+        <Generator></Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>
       <Compile Update="Log\LogWindow.xaml.cs">
         <DependentUpon>LogWindow.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Location\LocationTreeWindow.xaml.cs">
+        <DependentUpon>LocationTreeWindow.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
 

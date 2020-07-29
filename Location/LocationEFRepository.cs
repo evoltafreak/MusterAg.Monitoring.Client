@@ -22,6 +22,14 @@ namespace MusterAg.Monitoring.Client.Repository
                 return ctx.Location.ToList();
             }
         }
+        
+        public List<LocTree> ReadLocTree()
+        {
+            using (var ctx = new musteragContext())
+            {
+                return ctx.LocTree.OrderBy(lo => lo.Lvl).ToList();
+            }
+        }
 
     }
 

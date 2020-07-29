@@ -4,6 +4,7 @@ using LinqToDB.Data;
 using MusterAg.Monitoring.Client.Config;
 using MusterAg.Monitoring.Client.Customer;
 using MusterAg.Monitoring.Client.Models;
+using MusterAg.Monitoring.Client.Repository;
 using MusterAg.Monitoring.Client.View;
 
 namespace MusterAg.Monitoring.Client
@@ -121,6 +122,20 @@ namespace MusterAg.Monitoring.Client
                 CustomerWindow customerWindow = new CustomerWindow();
                 customerWindow.Closed += ReloadData;
                 customerWindow.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
+            }
+        }
+        
+        private void ShowLocationTree(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LocationTreeWindow locationTreeWindow = new LocationTreeWindow();
+                locationTreeWindow.Closed += ReloadData;
+                locationTreeWindow.ShowDialog();
             }
             catch (Exception ex)
             {

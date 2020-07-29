@@ -50,6 +50,10 @@ Hier werden alle eingetragenen Standorte in einer `MessageBox` angezeigt. Die An
 Durch das Aktivieren der LINQ-Checkbox werden alle Datenbankabfragen via LINQ getätigt.
 Beide Implementierungen liefern jedoch dieselben Resultate zurück.
 
+**Location Tree anzeigen**  
+Wenn man den Button `Location Tree anzeigen` betätigt, wird ein Fenster geöffnet, welches die Locations in einer `TreeView` anzeigt.
+![LocationTreeWindow][LocationTreeWindow]
+
 ## CustomerWindow  
 Im `CustomerWindow` können die Kunden verwaltet werden.
 ![CustomerWindow][CustomerWindow]
@@ -93,3 +97,4 @@ danach den Button `Kunde löschen` betätigen.
 [CustomerWindow]: ./Images/CustomerWindow.png "CustomerWindow"
 [CustomerWindow_Create]: ./Images/CustomerDetailWindow_Create.png "CustomerWindow_Create"
 [CustomerWindow_Update]: ./Images/CustomerDetailWindow_Update.png "CustomerWindow_Update"
+[LocationTreeWindow]: ./Images/LocationTreeWindow.png "LocationTreeWindow"

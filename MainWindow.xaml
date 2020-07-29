@@ -52,6 +52,8 @@
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
             <Button x:Name="BtnShowKunden" Content="Kunden anzeigen" Click="ShowKunden"
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+            <Button x:Name="BtnShowLocationTree" Content="Location Tree anzeigen" Click="ShowLocationTree"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
         </WrapPanel>
         
     </Grid>

@@ -25,6 +25,7 @@ namespace MusterAg.Monitoring.Client.Models
         public virtual DbSet<CustomerPod> CustomerPod { get; set; }
         public virtual DbSet<Device> Device { get; set; }
         public virtual DbSet<DeviceCredential> DeviceCredential { get; set; }
+        public virtual DbSet<LocTree> LocTree { get; set; }
         public virtual DbSet<Location> Location { get; set; }
         public virtual DbSet<LocationPod> LocationPod { get; set; }
         public virtual DbSet<Logging> Logging { get; set; }
@@ -345,6 +346,25 @@ namespace MusterAg.Monitoring.Client.Models
                     .HasConstraintName("device_credential$fk_DeviceCredential_Device");
             });
 
+            modelBuilder.Entity<LocTree>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("LOC_TREE");
+
+                entity.Property(e => e.Address)
+                    .HasColumnName("address")
+                    .HasMaxLength(200);
+
+                entity.Property(e => e.AddressNr)
+                    .HasColumnName("addressNr")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.IdLocation).HasColumnName("idLocation");
+
+                entity.Property(e => e.Lvl).HasColumnName("lvl");
+            });
+
             modelBuilder.Entity<Location>(entity =>
             {
                 entity.HasKey(e => e.IdLocation)
@@ -367,6 +387,8 @@ namespace MusterAg.Monitoring.Client.Models
                     .HasMaxLength(10);
 
                 entity.Property(e => e.FidPlace).HasColumnName("fidPlace");
+
+                entity.Property(e => e.Parent).HasColumnName("parent");
 
                 entity.HasOne(d => d.FidPlaceNavigation)
                     .WithMany(p => p.Location)

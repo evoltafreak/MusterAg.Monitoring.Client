@@ -12,6 +12,7 @@
 [1.0.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/1.0.0) - Testat NuGet  
 ### Database Advanced
 [3.0.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/3.0.0) - Testat EntityFramework  
+[3.1.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/3.1.0) - Testat CTE 
 
 ## MySQL Database Installation
 Navigate to `/Database` and run `generate-sql.bat`. Run the generated `sql.sql` in your SQL CLI or in any other database tool.

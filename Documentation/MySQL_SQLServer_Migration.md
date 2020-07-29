@@ -24,10 +24,10 @@ Als zweiten Punkt wählen Sie noch den Eintrag `Migrate Data` aus, um die Daten 
 Falls es zu Fehler kommt, müssen diese manuell behoben werden.
 
 ## Generate Models in EF Core (Database first)
-Um in Entity Framework Core Modelklassen mit dem Database-First-Ansatz zu generieren, muss man folgenden Befehle ausführen:
+Um in Entity Framework Core Modelklassen mit dem Database-First-Ansatz zu generieren, muss man folgenden Befehle ausführen:  
 `Install-Package Microsoft.EntityFrameworkCore.Tools`  
 `Install-Package Microsoft.EntityFrameworkCore.SqlServer`  
-`Scaffold-DbContext "Server=SURFACE;Database=musterag;User Id=<userId>;Password=<password>;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models  
+`Scaffold-DbContext "Server=SURFACE;Database=musterag;User Id=<userId>;Password=<password>;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force`  
 
 ## Import BAK-File
 Ein Backup-File steht ebenfalls im Source-Code zur Verfügung, welches via `SSMS` direkt importiert werden kann [musterag.bak](./Restore/musterag.bak). 

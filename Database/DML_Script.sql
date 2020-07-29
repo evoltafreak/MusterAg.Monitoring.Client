@@ -4136,11 +4136,11 @@ INSERT INTO MUSTERAG.Logging (timestamp, message, fidSeverity) VALUES (STR_TO_DA
 INSERT INTO MUSTERAG.Logging (timestamp, message, fidSeverity) VALUES (STR_TO_DATE('2019-06-07 11:33:19','%Y-%m-%d %H:%i:%s'), 'Debug logging', 5);
 
 -- Location
-INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Musterstrasse', '1', 3906);
-INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Megastrasse', '2a', 3876);
-INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Superstrasse', '5b', 3886);
-INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Topstreet', '20', 4000);
-INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Gaiserwaldstrasse', '6', 3870);
+INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Musterstrasse', '1', 3906, NULL);
+INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Megastrasse', '2a', 3876, 1);
+INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Superstrasse', '5b', 3886, 4);
+INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Topstreet', '20', 4000, 5);
+INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Gaiserwaldstrasse', '6', 3870, NULL);
 
 -- Customer
 INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, tel, fidLocation) VALUES ('M', 'Max', 'Mustermann', STR_TO_DATE('1995-01-01','%Y-%m-%d'), 'max.mustermann@musterag.ch', '1111111111', 1);
