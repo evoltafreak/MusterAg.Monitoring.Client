@@ -5,10 +5,13 @@
 **Install NuGet-Package:** `Install-Package MusterAg.Monitoring.Client`  
 
 ## Versions / Releases
+### Programming Advanced
 [2.2.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.2.0) - Testat LINQ  
 [2.1.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.1.0) - Testat Generics  
 [2.0.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.0.0) - Testat ObjectEquality  
 [1.0.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/1.0.0) - Testat NuGet  
+### Database Advanced
+
 
 ## MySQL Database Installation
 Navigate to `/Database` and run `generate-sql.bat`. Run the generated `sql.sql` in your SQL CLI or in any other database tool.
@@ -16,3 +19,8 @@ The generated database is called `musterag`.
 
 ## MySQL to SQL Server Migration Guide
 **Documentation** [Click here](./Documentation/MySQL_SQLServer_Migration.md)  
+
+## ERM SQL Server
+![ERM_SQLServer][ERM_SQLServer]
+
+[ERM_SQLServer]: ./Documentation/Images/ERM_SQLServer.png "ERM_SQLServer"

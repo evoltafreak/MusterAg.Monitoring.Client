@@ -20,9 +20,9 @@
         </Grid.RowDefinitions>
 
         <!-- Content -->
-        <Label x:Name="LblConnectionString" Content="Datenbankverbindung:" Grid.Row="0" Grid.Column="0"
+        <Label x:Name="LblConnectionString" Content="Datenbankverbindung (MSSQL):" Grid.Row="0" Grid.Column="0"
                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="TxtConnectionString" Grid.Row="0" Grid.Column="1" Text="{Binding ConnectionString}"
+        <TextBox x:Name="TxtConnectionString" IsEnabled="True" Grid.Row="0" Grid.Column="1" Text="{Binding ConnectionString}"
                  HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Margin="10,10,10,0" />
         <DataGrid x:Name="DataGrid" ItemsSource="{Binding LogList}" IsReadOnly="True" AutoGenerateColumns="False"
                   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"
@@ -50,7 +50,8 @@
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
             <Button x:Name="BtnShowAllLocation" Content="Alle Standorte anzeigen" Click="ShowAllLocation"
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
-            <CheckBox x:Name="ChbLinq" Content="LINQ" VerticalAlignment="Top" Margin="10,10,0,0" IsChecked="{Binding IsLinq}" />
+            <Button x:Name="BtnShowKunden" Content="Kunden anzeigen" Click="ShowKunden"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
         </WrapPanel>
         
     </Grid>

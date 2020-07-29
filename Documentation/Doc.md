@@ -50,9 +50,46 @@ Hier werden alle eingetragenen Standorte in einer `MessageBox` angezeigt. Die An
 Durch das Aktivieren der LINQ-Checkbox werden alle Datenbankabfragen via LINQ getätigt.
 Beide Implementierungen liefern jedoch dieselben Resultate zurück.
 
+## CustomerWindow  
+Im `CustomerWindow` können die Kunden verwaltet werden.
+![CustomerWindow][CustomerWindow]
+
+**Suche**  
+Im oberen Bereich befindet sich die `Suche`. Dort kann man mittels QuickSearch die Kunden nach `Vorname` und `Nachname` durchsuchen.
+
+**DataGrid der Kunden**  
+In dem DataGrid werden alle wichtigen Informationen über die Kunden dargestellt:  
+- `ID` - Identifikationsnummer des Kunden
+- `Gender` - Geschlecht
+- `Firstname` - Vorname
+- `Lastname` - Nachname
+- `Location` - Wohnort
+- `Birthday` - Geburtstag
+- `Email` - E-Mail-Adresse
+- `Tel` - Telefonnummer
+
+**Kunden laden**
+Mit dem Button `Kunden laden` werden alle Kunden in der Datenbank geladen.
+
+**Kunde erfassen**
+Wenn man den Button `Kunde erfassen` anklickt, öffnet sich ein neues Fenster in dem man einen neuen Kunden anlegen kann.  
+Dabei stehen Textfelder, Dropdowns und ein Datepicker zur Verfügung.  
+![CustomerWindow_Create][CustomerWindow_Create]
+
+**Kunde editieren**
+Dasselbe Fenster wie oben wird geöffnet wenn man den Punkt `Kunde eitieren` anwählt und den entsprechenden Kunden im DataGrid selektiert.  
+Dabei werden die Werte bereits in den GUI-Elementen befüllt und können überschrieben werden.  
+![CustomerWindow_Update][CustomerWindow_Update]
+
+**Kunde löschen**
+Als letzten Punkt, kann man noch einen Kunden löschen. Dabei muss man wieder einen Kunden im DataGrid selektieren und  
+danach den Button `Kunde löschen` betätigen.
+
 [MainWindow]: ./Images/MainWindow.png "MainWindow"
 [MainWindow_LoadData]: ./Images/MainWindow_LoadData.png "MainWindow_LoadData"
 [MainWindow_AddLog]: ./Images/MainWindow_AddLog.png "MainWindow_AddLog"
 [MainWindow_FindDuplicates]: ./Images/MainWindow_FindDuplicates.png "MainWindow_FindDuplicates"
 [MainWindow_ShowAllLocation]: ./Images/MainWindow_ShowAllLocation.png "MainWindow_ShowAllLocation"
-
+[CustomerWindow]: ./Images/CustomerWindow.png "CustomerWindow"
+[CustomerWindow_Create]: ./Images/CustomerDetailWindow_Create.png "CustomerWindow_Create"
+[CustomerWindow_Update]: ./Images/CustomerDetailWindow_Update.png "CustomerWindow_Update"

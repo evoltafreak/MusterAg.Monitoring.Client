@@ -8,7 +8,18 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="EntityFramework" Version="6.4.4" />
       <PackageReference Include="linq2db.MySql" Version="2.9.8" />
+      <PackageReference Include="linq2db.SqlServer" Version="2.9.8" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.6">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="MySql.Data" Version="8.0.20" />
     </ItemGroup>
 
@@ -19,13 +30,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Page Update="View\LogWindow.xaml">
+      <Page Update="Log\LogWindow.xaml">
         <Generator></Generator>
       </Page>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="View\LogWindow.xaml.cs">
+      <Compile Update="Log\LogWindow.xaml.cs">
         <DependentUpon>LogWindow.xaml</DependentUpon>
       </Compile>
     </ItemGroup>

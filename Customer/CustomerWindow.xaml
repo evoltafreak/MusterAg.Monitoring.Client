@@ -1,0 +1,53 @@
+﻿<Window x:Class="MusterAg.Monitoring.Client.Customer.CustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MusterAg.Monitoring.Client.Customer"
+        mc:Ignorable="d"
+        Title="Muster AG Monitoring - Kundenansicht" Height="500" Width="800">
+    <Grid x:Name="GridMain">
+
+        <!-- Grid Definitions -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Content -->
+        <Label x:Name="LblSearch" Content="Suche (Vorname und Nachname):" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="TxtSearchKey" Text="{Binding SearchKey}" KeyUp="ReadCustomerListBySearchKey" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25" Margin="10,10,10,0" />
+        <DataGrid x:Name="DataGrid" ItemsSource="{Binding CustomerList}" IsReadOnly="True" AutoGenerateColumns="False"
+                  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                  Margin="10,10,10,0" Height="300px" VerticalScrollBarVisibility="Visible">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding IdCustomer}" />
+                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" />
+                <DataGridTextColumn Header="Firstname" Binding="{Binding Firstname}" />
+                <DataGridTextColumn Header="Lastname" Binding="{Binding Lastname}" />
+                <DataGridTextColumn Header="Birthdate" Binding="{Binding Birthdate}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Tel" Binding="{Binding Tel}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!-- Actions -->
+        <WrapPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="BtnReadCustomerList" Content="Kunden laden" Click="ReadCustomerList"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+            <Button x:Name="BtnCreateCustomer" Content="Kunde erfassen" Click="CreateCustomer"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+            <Button x:Name="BtnUpdateCustomer" Content="Kunde editieren" Click="UpdateCustomer"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+            <Button x:Name="BtnDeleteCustomer" Content="Kunde löschen" Click="DeleteCustomer"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+        </WrapPanel>
+        
+    </Grid>
+</Window>

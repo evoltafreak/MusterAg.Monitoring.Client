@@ -1,0 +1,35 @@
+﻿<Window x:Class="MusterAg.Monitoring.Client.View.LogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d"
+        Title="Muster AG Monitoring - Log hinzufügen" SizeToContent="Height" Width="500" >
+    <Grid x:Name="GridLog">
+        
+        <!-- Grid Definition -->
+        <Grid.ColumnDefinitions> 
+            <ColumnDefinition Width="*" /> 
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions> 
+        <Grid.RowDefinitions> 
+            <RowDefinition Height="Auto" /> 
+            <RowDefinition Height="Auto" /> 
+            <RowDefinition Height="Auto" /> 
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions> 
+        
+        <!-- Content -->
+        <Label x:Name="LblMessage" Content="Message:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="TxtMessage" Text="{Binding Log.Message}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="75" Margin="10,10,10,0" />
+        <Label x:Name="LblPodList" Content="Pod:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <ComboBox x:Name="CmbPodList" ItemsSource="{Binding PodList}" DisplayMemberPath="Description" SelectionChanged="SetLog" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0" />
+        <Label x:Name="LblSeverityList" Content="Log level:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <ComboBox x:Name="CmbSeverityList" ItemsSource="{Binding SeverityList}" DisplayMemberPath="Severity1" SelectionChanged="SetLog" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0" />
+        
+        <!-- Actions -->
+        <WrapPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="BtnSave" Content="Speichern" Click="AddLog" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+        </WrapPanel>
+    </Grid>
+</Window>

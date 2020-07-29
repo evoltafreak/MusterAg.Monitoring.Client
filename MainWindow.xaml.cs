@@ -2,7 +2,8 @@
 using System.Windows;
 using LinqToDB.Data;
 using MusterAg.Monitoring.Client.Config;
-using MusterAg.Monitoring.Client.Model;
+using MusterAg.Monitoring.Client.Customer;
+using MusterAg.Monitoring.Client.Models;
 using MusterAg.Monitoring.Client.View;
 
 namespace MusterAg.Monitoring.Client
@@ -40,8 +41,8 @@ namespace MusterAg.Monitoring.Client
             {
                 if (DataGrid.SelectedItem != null)
                 {
-                    Log log = (Log) DataGrid.SelectedItem;
-                    mainViewModel.ClearLog(log.IdPod);
+                    VLogentries log = (VLogentries) DataGrid.SelectedItem;
+                    mainViewModel.ClearLog(log.Id);
                     mainViewModel.ReadLogList();
                 }
                 else
@@ -59,7 +60,7 @@ namespace MusterAg.Monitoring.Client
         {
             try
             {
-                LogWindow logWindow = new LogWindow(mainViewModel.ConnectionString, mainViewModel.IsLinq);
+                LogWindow logWindow = new LogWindow();
                 logWindow.Closed += ReloadData;
                 logWindow.ShowDialog();
             }
@@ -112,5 +113,20 @@ namespace MusterAg.Monitoring.Client
                 MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
+
+        private void ShowKunden(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CustomerWindow customerWindow = new CustomerWindow();
+                customerWindow.Closed += ReloadData;
+                customerWindow.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
+            }
+        }
+        
     }
 }
