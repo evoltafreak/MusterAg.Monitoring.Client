@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS MUSTERAG.Pod (
 	description VARCHAR(200),
 	billLimit DECIMAL,
 	credit DECIMAL,
+	validFrom TIMESTAMP,
 	fidCustomer INT NOT NULL,
 	PRIMARY KEY (idPod),
 	CONSTRAINT fk_Pod_Customer

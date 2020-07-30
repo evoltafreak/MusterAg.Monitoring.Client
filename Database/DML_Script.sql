@@ -4149,9 +4149,9 @@ INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, te
 INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, tel, fidLocation) VALUES ('M', 'Tom', 'Top', STR_TO_DATE('1993-01-13','%Y-%m-%d'), 'tom.top@musterag.ch', '4444444444', 4);
 
 -- Pod
-INSERT INTO MUSTERAG.Pod (description, billLimit, credit, fidCustomer) VALUES ("POD1", 500, 50, 1);
-INSERT INTO MUSTERAG.Pod (description, billLimit, credit, fidCustomer) VALUES ("POD2", 1000, 100, 2);
-INSERT INTO MUSTERAG.Pod (description, billLimit, credit, fidCustomer) VALUES ("POD3", 200, 10, 3);
+INSERT INTO MUSTERAG.Pod (description, billLimit, credit, fidCustomer) VALUES ("POD1", 500, 50, STR_TO_DATE('2019-03-31','%Y-%m-%d'),  1);
+INSERT INTO MUSTERAG.Pod (description, billLimit, credit, fidCustomer) VALUES ("POD2", 1000, 100, STR_TO_DATE('2019-06-30','%Y-%m-%d'), 2);
+INSERT INTO MUSTERAG.Pod (description, billLimit, credit, fidCustomer) VALUES ("POD3", 200, 10, STR_TO_DATE('2019-09-30','%Y-%m-%d'), 3);
 
 -- Pod Logging
 INSERT INTO MUSTERAG.Pod_Logging (fidPod, fidLogging) VALUES (1, 1);
