@@ -71,6 +71,19 @@ namespace MusterAg.Monitoring.Client.Customer
                 MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
-        
+
+        private void SetPassword(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                PasswordBox pb = (PasswordBox) sender;
+                CustomerDetailViewModel.Customer.Password = pb.Password;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
+            }
+        }
+
     }
 }

@@ -4143,10 +4143,10 @@ INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Topstreet'
 INSERT INTO MUSTERAG.Location (address, addressNr, fidPlace) VALUES ('Gaiserwaldstrasse', '6', 3870, NULL);
 
 -- Customer
-INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, tel, fidLocation) VALUES ('M', 'Max', 'Mustermann', STR_TO_DATE('1995-01-01','%Y-%m-%d'), 'max.mustermann@musterag.ch', '1111111111', 1);
-INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, tel, fidLocation) VALUES ('M', 'John', 'Mega', STR_TO_DATE('1997-01-13','%Y-%m-%d'), 'john.mega@musterag.ch', '2222222222', 2);
-INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, tel, fidLocation) VALUES ('M', 'Andrea', 'Super', STR_TO_DATE('1985-01-13','%Y-%m-%d'), 'andrea.super@musterag.ch', '3333333333', 3);
-INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, tel, fidLocation) VALUES ('M', 'Tom', 'Top', STR_TO_DATE('1993-01-13','%Y-%m-%d'), 'tom.top@musterag.ch', '4444444444', 4);
+INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, tel, customerNr, website, password, fidLocation) VALUES ('M', 'Max', 'Mustermann', STR_TO_DATE('1995-01-01','%Y-%m-%d'), 'max.mustermann@musterag.ch', '1111111111', 'CU000001', 'mustermann.com', '0AE6EB964B454946521D6E3C2268426C84FDD73F87A5DA44E1D9A57F4B1B4893',  1);
+INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, tel, customerNr, website, password, fidLocation) VALUES ('M', 'John', 'Mega', STR_TO_DATE('1997-01-13','%Y-%m-%d'), 'john.mega@musterag.ch', '2222222222', 'CU000002', 'mega.com', '65380222262818EB78962E57E29F435EC1BE1A3D4A29A48E0E2D97F7AA1F54D0', 2);
+INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, tel, customerNr, website, password, fidLocation) VALUES ('M', 'Andrea', 'Super', STR_TO_DATE('1985-01-13','%Y-%m-%d'), 'andrea.super@musterag.ch', '3333333333', 'CU000003', 'super.com', '5C4BD751CBCD6B776D13D2CC13F72257DE22485006819CAD990706AB8DCE5516', 3);
+INSERT INTO MUSTERAG.Customer (gender, firstname, lastname, birthdate, email, tel, customerNr, website, password, fidLocation) VALUES ('M', 'Tom', 'Top', STR_TO_DATE('1993-01-13','%Y-%m-%d'), 'tom.top@musterag.ch', '4444444444', 'CU000004', 'top.com', 'B556794FAC2A670714242FEA3CE26C2C79C8B89496C5AB3B5B6B749D998B1E07', 4);
 
 -- Pod
 INSERT INTO MUSTERAG.Pod (description, billLimit, credit, fidCustomer) VALUES ("POD1", 500, 50, 1);

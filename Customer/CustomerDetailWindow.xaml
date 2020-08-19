@@ -8,54 +8,98 @@
         Title="Muster AG Monitoring - Kunde editieren" Height="450" Width="800">
     <Grid>
         <!-- Grid Definition -->
-        <Grid.ColumnDefinitions> 
-            <ColumnDefinition Width="*" /> 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2*" />
-        </Grid.ColumnDefinitions> 
-        <Grid.RowDefinitions> 
-            <RowDefinition Height="Auto" /> 
-            <RowDefinition Height="Auto" /> 
-            <RowDefinition Height="Auto" /> 
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions> 
-        
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
         <!-- Content -->
         <!-- Firstname -->
-        <Label x:Name="LblFirstname" Content="Firstname:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="TxtFirstname" Text="{Binding Customer.Firstname}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25" Margin="10,10,10,0" />
-        
+        <Label x:Name="LblFirstname" Content="Firstname:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="TxtFirstname" Text="{Binding Customer.Firstname}" Grid.Row="0" Grid.Column="1"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25"
+                 Margin="10,10,10,0" />
+
         <!-- Lastname -->
-        <Label x:Name="LblLastname" Content="Lastname:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="TxtLastname" Text="{Binding Customer.Lastname}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25" Margin="10,10,10,0" />
-        
+        <Label x:Name="LblLastname" Content="Lastname:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="TxtLastname" Text="{Binding Customer.Lastname}" Grid.Row="1" Grid.Column="1"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25"
+                 Margin="10,10,10,0" />
+
         <!-- Gender -->
-        <Label x:Name="LblGender" Content="Gender:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <ComboBox x:Name="CmbPodList" ItemsSource="{Binding GenderList}" SelectionChanged="SetGender" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0" />
-        
+        <Label x:Name="LblGender" Content="Gender:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,10,0,0" />
+        <ComboBox x:Name="CmbPodList" ItemsSource="{Binding GenderList}" SelectionChanged="SetGender" Grid.Row="2"
+                  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0" />
+
         <!-- Email -->
-        <Label x:Name="LblEmail" Content="E-Mail:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="TxtEmail" Text="{Binding Customer.Email}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25" Margin="10,10,10,0" />
-        
+        <Label x:Name="LblEmail" Content="E-Mail:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="TxtEmail" Text="{Binding Customer.Email}" Grid.Row="3" Grid.Column="1"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25"
+                 Margin="10,10,10,0" />
+
         <!-- Tel -->
-        <Label x:Name="LblTel" Content="Tel:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="TxtTel" Text="{Binding Customer.Tel}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25" Margin="10,10,10,0" />
-        
+        <Label x:Name="LblTel" Content="Tel:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="TxtTel" Text="{Binding Customer.Tel}" Grid.Row="4" Grid.Column="1"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25"
+                 Margin="10,10,10,0" />
+
         <!-- Birthday -->
-        <Label x:Name="LblBirthday" Content="Birthday:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <DatePicker SelectedDate="{Binding Customer.Birthday}" SelectedDateChanged="SetBirthday" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="25" Margin="10,10,10,0"></DatePicker>
-        
+        <Label x:Name="LblBirthday" Content="Birthday:" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,10,0,0" />
+        <DatePicker SelectedDate="{Binding Customer.Birthday}" SelectedDateChanged="SetBirthday" Grid.Row="5"
+                    Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="25"
+                    Margin="10,10,10,0" />
+
         <!-- Location -->
-        <Label x:Name="LblLocation" Content="Location:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <ComboBox x:Name="CmbLocationList" ItemsSource="{Binding LocationList}" DisplayMemberPath="Address" SelectedItem="{Binding Path=LocationList, Mode=TwoWay}" SelectedValuePath="Address" SelectedValue="{Binding Customer.Address }" SelectionChanged="SetLocation" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0" />
+        <Label x:Name="LblLocation" Content="Location:" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,10,0,0" />
+        <ComboBox x:Name="CmbLocationList" ItemsSource="{Binding LocationList}" DisplayMemberPath="Address"
+                  SelectedItem="{Binding Path=LocationList, Mode=TwoWay}" SelectedValuePath="Address"
+                  SelectedValue="{Binding Customer.Address }" SelectionChanged="SetLocation" Grid.Row="6"
+                  Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10,10,10,0" />
+        
+        <!-- Kundennummer -->
+        <Label x:Name="LblCustomerNr" Content="Kundennummer:" Grid.Row="7" Grid.Column="0" HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="TxtCustomerNr" Text="{Binding Customer.CustomerNr}" Grid.Row="7" Grid.Column="1"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25"
+                 Margin="10,10,10,0" />
+        
+        <!-- Website -->
+        <Label x:Name="LblWebsite" Content="Website:" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="TxtWebsite" Text="{Binding Customer.Website}" Grid.Row="8" Grid.Column="1"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Top" TextWrapping="Wrap" Height="25"
+                 Margin="10,10,10,0" />
+        
+        <!-- Password -->
+        <Label x:Name="LblPassword" Content="Password:" Grid.Row="9" Grid.Column="0" HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,10,0,0" />
+        <PasswordBox x:Name="PwdPassword" PasswordChanged="SetPassword" Grid.Row="9" Grid.Column="1"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="25" Margin="10,10,10,0" />
         
         <!-- Actions -->
-        <WrapPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,10">
-            <Button x:Name="BtnSave" Content="Speichern" Click="SaveKunde" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
+        <WrapPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="BtnSave" Content="Speichern" Click="SaveKunde" HorizontalAlignment="Left"
+                    VerticalAlignment="Top" Margin="10,10,0,0" Padding="5,2,5,2" />
         </WrapPanel>
-        
+
     </Grid>
 </Window>

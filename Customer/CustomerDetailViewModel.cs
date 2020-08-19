@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Security.Cryptography;
+using System.Text;
+using System.Windows;
+using MusterAg.Monitoring.Client.Helper;
 using MusterAg.Monitoring.Client.Models;
 using MusterAg.Monitoring.Client.Repository;
 
@@ -32,12 +36,33 @@ namespace MusterAg.Monitoring.Client.Customer
 
         public void CreateCustomer()
         {
-            _customerRepository.CreateCustomer(Customer);
+            if (checkCustomer())
+            {
+                _customerRepository.CreateCustomer(Customer);
+            }else
+            {
+                MessageBox.Show("Die zu speichernen Informationen entsprechen nicht den Richtlinien.", "Speichern fehlgeschlagen");
+            }
         }
         
         public void UpdateCustomer()
         {
-            _customerRepository.UpdateCustomer(Customer);
+            if(checkCustomer())
+            {
+                _customerRepository.UpdateCustomer(Customer);
+            }
+            else
+            {
+                MessageBox.Show("Die zu speichernen Informationen entsprechen nicht den Richtlinien.", "Speichern fehlgeschlagen");
+            }
+        }
+
+        private bool checkCustomer()
+        {
+            return RegexHelper.MatchEmail(Customer.Email)
+                   && RegexHelper.MatchEmail(Customer.CustomerNr)
+                   && RegexHelper.MatchEmail(Customer.Website)
+                   && Customer.Password != null;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

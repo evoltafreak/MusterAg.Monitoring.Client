@@ -55,6 +55,9 @@ CREATE TABLE IF NOT EXISTS MUSTERAG.Customer (
   birthdate DATE NOT NULL,
   email VARCHAR(200) NOT NULL,
   tel VARCHAR(20) NOT NULL,
+  customerNr VARCHAR(7) NOT NULL,
+  website VARCHAR(200) NOT NULL,
+  password VARCHAR(200) NOT NULL,
   fidLocation INT NOT NULL,
   PRIMARY KEY (idCustomer),
   CONSTRAINT fk_Customer_Location

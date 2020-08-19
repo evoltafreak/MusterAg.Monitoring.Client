@@ -34,6 +34,9 @@
                 <DataGridTextColumn Header="Birthdate" Binding="{Binding Birthdate}" />
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
                 <DataGridTextColumn Header="Tel" Binding="{Binding Tel}" />
+                <DataGridTextColumn Header="Website" Binding="{Binding CustomerNr}" />
+                <DataGridTextColumn Header="Website" Binding="{Binding Website}" />
+                <DataGridTextColumn Header="Password" Binding="{Binding Password}" />
             </DataGrid.Columns>
         </DataGrid>
         

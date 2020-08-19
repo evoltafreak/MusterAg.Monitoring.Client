@@ -15,7 +15,7 @@ namespace MusterAg.Monitoring.Client.Models
         public string Address { get; set; }
         public string AddressNr { get; set; }
         public int FidPlace { get; set; }
-        public int Parent { get; set; }
+        public int? Parent { get; set; }
 
         public virtual Place FidPlaceNavigation { get; set; }
         public virtual ICollection<Customer> Customer { get; set; }

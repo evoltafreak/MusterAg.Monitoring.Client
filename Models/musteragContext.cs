@@ -217,6 +217,21 @@ namespace MusterAg.Monitoring.Client.Models
                     .IsRequired()
                     .HasColumnName("tel")
                     .HasMaxLength(20);
+                
+                entity.Property(e => e.CustomerNr)
+                    .IsRequired()
+                    .HasColumnName("customerNr")
+                    .HasMaxLength(7);
+                
+                entity.Property(e => e.Website)
+                    .IsRequired()
+                    .HasColumnName("website")
+                    .HasMaxLength(200);
+                
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasColumnName("password")
+                    .HasMaxLength(200);
 
                 entity.HasOne(d => d.FidLocationNavigation)
                     .WithMany(p => p.Customer)
