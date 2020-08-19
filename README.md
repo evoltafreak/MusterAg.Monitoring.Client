@@ -6,13 +6,14 @@
 
 ## Versions / Releases
 ### Programming Advanced
+[3.2.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/3.2.0) - Testat Regular Expressions   
 [2.2.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.2.0) - Testat LINQ  
 [2.1.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.1.0) - Testat Generics  
 [2.0.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.0.0) - Testat ObjectEquality  
 [1.0.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/1.0.0) - Testat NuGet  
 ### Database Advanced
+[3.1.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/3.1.0) - Testat CTE  
 [3.0.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/3.0.0) - Testat EntityFramework  
-[3.1.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/3.1.0) - Testat CTE 
 
 ## MySQL Database Installation
 Navigate to `/Database` and run `generate-sql.bat`. Run the generated `sql.sql` in your SQL CLI or in any other database tool.
