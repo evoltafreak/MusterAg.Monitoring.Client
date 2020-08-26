@@ -5,7 +5,7 @@ using MusterAg.Monitoring.Client.Model;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class LocationLinqRepository : BaseLinqRepository<Location>, ILocationRepository
+    public class LocationLinqRepository : BaseLinqRepository<Location>
     {
         
         public LocationLinqRepository(string connectionString)

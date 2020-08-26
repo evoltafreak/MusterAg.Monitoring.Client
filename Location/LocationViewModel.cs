@@ -7,17 +7,16 @@ using System.ComponentModel;
 
  namespace MusterAg.Monitoring.Client.Repository
 {
-    public class LocationViewModel : INotifyPropertyChanged
+    public class LocationViewModel : INotifyPropertyChanged, ILocationViewModel
     {
         public LocTreeNode LocTreeItem { get; set; }
-        public ObservableCollection<VLogentries> LogList { get; set; }
 
-        private LocationEFRepository _locationRepository;
+        private ILocationRepository _locationRepository;
 
-        public LocationViewModel()
+        public LocationViewModel(ILocationRepository locationRepository)
         {
             LocTreeItem = new LocTreeNode();
-            _locationRepository = new LocationEFRepository();
+            _locationRepository = locationRepository;
 
             List<LocTree> locTreeList = _locationRepository.ReadLocTree();
             CreateLocTree(locTreeList);
@@ -26,15 +25,15 @@ using System.ComponentModel;
             
         }
 
-        private void CreateLocTree(List<LocTree> locTreeList)
+        public void CreateLocTree(List<LocTree> locTreeList)
         {
             LocTreeNode item = new LocTreeNode();
             item.Source = new LocTree { Address = "Locations" };
             item.Children = new ObservableCollection<LocTreeNode>(CreateTree(locTreeList));
             LocTreeItem = item;
         }
-        
-        List<LocTreeNode> CreateTree(List<LocTree> locTreeList)
+
+        public List<LocTreeNode> CreateTree(List<LocTree> locTreeList)
         {
             Dictionary<int, LocTreeNode> lookup = new Dictionary<int, LocTreeNode>();
             locTreeList.ForEach(x => lookup.Add(x.IdLocation, new LocTreeNode { Source = x }));

@@ -1,19 +1,19 @@
 ﻿using System.Windows;
-using MusterAg.Monitoring.Client.Repository;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
+
     public partial class LocationTreeWindow : Window
     {
 
-        private LocationViewModel locationViewModel;
+        private readonly ILocationViewModel _locationViewModel;
 
-        public LocationTreeWindow()
+        public LocationTreeWindow(ILocationViewModel locationViewModel)
         {
             InitializeComponent();
-            locationViewModel = new LocationViewModel();
-            DataContext = locationViewModel;
-            trvMenu.Items.Add(locationViewModel.LocTreeItem);
+            _locationViewModel = locationViewModel;
+            DataContext = _locationViewModel;
+            trvMenu.Items.Add(_locationViewModel.LocTreeItem);
         }
 
     }

@@ -9,18 +9,18 @@ using MusterAg.Monitoring.Client.Repository;
 
 namespace MusterAg.Monitoring.Client
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : INotifyPropertyChanged, IMainViewModel
     {
         public string ConnectionString { get; set; }
         public ObservableCollection<VLogentries> LogList { get; set; }
         
-        private LogEFRepository _logRepository;
-        private LocationEFRepository _locationRepository;
+        private ILogRepository _logRepository;
+        private ILocationRepository _locationRepository;
 
-        public MainViewModel()
+        public MainViewModel(ILogRepository logRepository, ILocationRepository locationRepository)
         {
-            _logRepository = new LogEFRepository();
-            _locationRepository = new LocationEFRepository();
+            _logRepository = logRepository;
+            _locationRepository = locationRepository;
             ConnectionString = ConfigurationManager.ConnectionStrings["connectionStringSqlServer"].ConnectionString;
             OnPropertyChanged(this, nameof(ConnectionString));
         }

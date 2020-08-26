@@ -4,36 +4,36 @@ using System.ComponentModel;
 
 namespace MusterAg.Monitoring.Client.Customer
 {
-    public class CustomerViewModel : INotifyPropertyChanged
+    public class CustomerViewModel : INotifyPropertyChanged, ICustomerViewModel
     {
 
         public String SearchKey { get; set; }
         public ObservableCollection<Models.Customer> CustomerList { get; set; }
 
-        private CustomerEFRepository customerRepository;
+        private readonly ICustomerRepository _customerRepository;
 
-        public CustomerViewModel()
+        public CustomerViewModel(ICustomerRepository customerRepository)
         {
             SearchKey = "";
-            customerRepository = new CustomerEFRepository();
+            _customerRepository = customerRepository;
         }
 
         public void ReadCustomerList()
         {
-            CustomerList = new ObservableCollection<Models.Customer>(customerRepository.ReadCustomerList());
+            CustomerList = new ObservableCollection<Models.Customer>(_customerRepository.ReadCustomerList());
             OnPropertyChanged(this, nameof(CustomerList));
         }
         
         public void ReadCustomerListBySearchKey()
         {
-            CustomerList = new ObservableCollection<Models.Customer>(customerRepository.ReadCustomerListBySearchKey(SearchKey));
+            CustomerList = new ObservableCollection<Models.Customer>(_customerRepository.ReadCustomerListBySearchKey(SearchKey));
             OnPropertyChanged(this, nameof(CustomerList));
         }
         
         
         public void DeleteCustomer(Models.Customer customer)
         {
-            customerRepository.DeleteCustomer(customer);
+            _customerRepository.DeleteCustomer(customer);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

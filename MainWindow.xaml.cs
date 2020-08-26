@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using Autofac;
 using LinqToDB.Data;
 using MusterAg.Monitoring.Client.Config;
 using MusterAg.Monitoring.Client.Customer;
@@ -14,21 +15,34 @@ namespace MusterAg.Monitoring.Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainViewModel mainViewModel;
+        
+        private IContainer _container;
+        private readonly IMainViewModel _mainViewModel;
+        private readonly CustomerWindow _customerWindow;
+        private readonly LogWindow _logWindow;
+        private readonly LocationTreeWindow _locationTreeWindow;
 
         public MainWindow()
         {
             InitializeComponent();
             DataConnection.DefaultSettings = new DbConfig();
-            mainViewModel = new MainViewModel();
-            DataContext = mainViewModel;
+            _container = ContainerConfig.BuildAutofacContainer();
+            using (var container = _container.BeginLifetimeScope())
+            {
+                _mainViewModel = container.Resolve<IMainViewModel>();
+                _customerWindow = container.Resolve<CustomerWindow>();
+                _logWindow = container.Resolve<LogWindow>();
+                _locationTreeWindow = container.Resolve<LocationTreeWindow>();
+                DataContext = _mainViewModel;
+            }
         }
 
-        private void LoadData(object sender, RoutedEventArgs e)
+
+        public void LoadData(object sender, RoutedEventArgs e)
         {
             try
             {
-                mainViewModel.ReadLogList();
+                _mainViewModel.ReadLogList();
             }
             catch (Exception ex)
             {
@@ -36,15 +50,15 @@ namespace MusterAg.Monitoring.Client
             }
         }
 
-        private void ClearLog(object sender, RoutedEventArgs e)
+        public void ClearLog(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (DataGrid.SelectedItem != null)
                 {
                     VLogentries log = (VLogentries) DataGrid.SelectedItem;
-                    mainViewModel.ClearLog(log.Id);
-                    mainViewModel.ReadLogList();
+                    _mainViewModel.ClearLog(log.Id);
+                    _mainViewModel.ReadLogList();
                 }
                 else
                 {
@@ -57,13 +71,12 @@ namespace MusterAg.Monitoring.Client
             }
         }
 
-        private void AddLog(object sender, RoutedEventArgs e)
+        public void AddLog(object sender, RoutedEventArgs e)
         {
             try
             {
-                LogWindow logWindow = new LogWindow();
-                logWindow.Closed += ReloadData;
-                logWindow.ShowDialog();
+                _logWindow.Closed += ReloadData;
+                _logWindow.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -71,11 +84,11 @@ namespace MusterAg.Monitoring.Client
             }
         }
 
-        private void ReloadData(object sender, EventArgs e)
+        public void ReloadData(object sender, EventArgs e)
         {
             try
             {
-                mainViewModel.ReadLogList();
+                _mainViewModel.ReadLogList();
             }
             catch (Exception ex)
             {
@@ -83,13 +96,13 @@ namespace MusterAg.Monitoring.Client
             }
         }
 
-        private void FindDuplicates(object sender, RoutedEventArgs e)
+        public void FindDuplicates(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (mainViewModel.LogList != null)
+                if (_mainViewModel.LogList != null)
                 {
-                    string message = mainViewModel.FindDuplicates();
+                    string message = _mainViewModel.FindDuplicates();
                     MessageBox.Show(message, "Duplikate");
                 }
                 else
@@ -103,11 +116,11 @@ namespace MusterAg.Monitoring.Client
             }
         }
 
-        private void ShowAllLocation(object sender, RoutedEventArgs e)
+        public void ShowAllLocation(object sender, RoutedEventArgs e)
         {
             try
             {
-                string message = mainViewModel.ShowAllLocation();
+                string message = _mainViewModel.ShowAllLocation();
                 MessageBox.Show(message, "Standorte");
             } catch (Exception ex)
             {
@@ -115,27 +128,25 @@ namespace MusterAg.Monitoring.Client
             }
         }
 
-        private void ShowKunden(object sender, RoutedEventArgs e)
+        public void ShowKunden(object sender, RoutedEventArgs e)
         {
             try
             {
-                CustomerWindow customerWindow = new CustomerWindow();
-                customerWindow.Closed += ReloadData;
-                customerWindow.ShowDialog();
+                _customerWindow.Closed += ReloadData;
+                _customerWindow.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
-        
-        private void ShowLocationTree(object sender, RoutedEventArgs e)
+
+        public void ShowLocationTree(object sender, RoutedEventArgs e)
         {
             try
             {
-                LocationTreeWindow locationTreeWindow = new LocationTreeWindow();
-                locationTreeWindow.Closed += ReloadData;
-                locationTreeWindow.ShowDialog();
+                _locationTreeWindow.Closed += ReloadData;
+                _locationTreeWindow.ShowDialog();
             }
             catch (Exception ex)
             {

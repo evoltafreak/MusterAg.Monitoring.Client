@@ -4,7 +4,7 @@ using MusterAg.Monitoring.Client.Models;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class PodEFRepository
+    public class PodEFRepository : IPodRepository
     {
 
         public List<Pod> ReadPodList()

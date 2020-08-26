@@ -9,21 +9,23 @@ namespace MusterAg.Monitoring.Client.Customer
     public partial class CustomerWindow : Window
     {
         
-        private CustomerViewModel customerViewModel;
+        private readonly ICustomerViewModel _customerViewModel;
+        private readonly CustomerDetailWindow _customerDetailWindow;
 
-        public CustomerWindow()
+        public CustomerWindow(ICustomerViewModel customerViewModel, CustomerDetailWindow customerDetailWindow)
         {
             InitializeComponent();
             DataConnection.DefaultSettings = new DbConfig();
-            customerViewModel = new CustomerViewModel();
-            DataContext = customerViewModel;
+            _customerViewModel = customerViewModel;
+            _customerDetailWindow = customerDetailWindow;
+            DataContext = _customerViewModel;
         }
-        
-        private void ReloadData(object sender, EventArgs e)
+
+        public void ReloadData(object sender, EventArgs e)
         {
             try
             {
-                customerViewModel.ReadCustomerList();
+                _customerViewModel.ReadCustomerList();
             }
             catch (Exception ex)
             {
@@ -31,56 +33,55 @@ namespace MusterAg.Monitoring.Client.Customer
             }
         }
 
-        private void ReadCustomerList(object sender, RoutedEventArgs e)
+        public void ReadCustomerList(object sender, RoutedEventArgs e)
         {
             try
             {
-                customerViewModel.ReadCustomerList();
+                _customerViewModel.ReadCustomerList();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
-        
-        private void ReadCustomerListBySearchKey(object sender, RoutedEventArgs e)
+
+        public void ReadCustomerListBySearchKey(object sender, RoutedEventArgs e)
         {
             try
             {
                 TextBox textBox = (TextBox) sender;
-                customerViewModel.SearchKey = textBox.Text;
-                customerViewModel.ReadCustomerListBySearchKey();
+                _customerViewModel.SearchKey = textBox.Text;
+                _customerViewModel.ReadCustomerListBySearchKey();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
-        
-        private void CreateCustomer(object sender, RoutedEventArgs e)
+
+        public void CreateCustomer(object sender, RoutedEventArgs e)
         {
             try
             {
-                CustomerDetailWindow customerDetailWindow = new CustomerDetailWindow();
-                customerDetailWindow.Closed += ReloadData;
-                customerDetailWindow.ShowDialog();
+                _customerDetailWindow.Closed += ReloadData;
+                _customerDetailWindow.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
-        
-        private void UpdateCustomer(object sender, RoutedEventArgs e)
+
+        public void UpdateCustomer(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (DataGrid.SelectedItem != null)
                 {
                     Models.Customer customer = (Models.Customer) DataGrid.SelectedItem;
-                    CustomerDetailWindow customerDetailWindow = new CustomerDetailWindow(customer);
-                    customerDetailWindow.Closed += ReloadData;
-                    customerDetailWindow.ShowDialog();
+                    _customerDetailWindow.Customer = customer;
+                    _customerDetailWindow.Closed += ReloadData;
+                    _customerDetailWindow.ShowDialog();
                 }
                 else
                 {
@@ -92,8 +93,8 @@ namespace MusterAg.Monitoring.Client.Customer
                 MessageBox.Show("Exception occured: " + ex.Message, "Exception occured");
             }
         }
-        
-        private void DeleteCustomer(object sender, RoutedEventArgs e)
+
+        public void DeleteCustomer(object sender, RoutedEventArgs e)
         {
             
             try
@@ -101,8 +102,8 @@ namespace MusterAg.Monitoring.Client.Customer
                 if (DataGrid.SelectedItem != null)
                 {
                     Models.Customer customer = (Models.Customer) DataGrid.SelectedItem;
-                    customerViewModel.DeleteCustomer(customer);
-                    customerViewModel.ReadCustomerList();
+                    _customerViewModel.DeleteCustomer(customer);
+                    _customerViewModel.ReadCustomerList();
                 }
                 else
                 {

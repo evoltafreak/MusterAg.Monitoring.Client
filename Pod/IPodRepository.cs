@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using MusterAg.Monitoring.Client.Model;
+using MusterAg.Monitoring.Client.Models;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
     public interface IPodRepository
     {
-        public List<Pod> ReadPodList();
-        public string ConnectionString { get; set; }
+        List<Pod> ReadPodList();
     }
 }

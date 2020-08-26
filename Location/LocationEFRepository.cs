@@ -4,7 +4,8 @@ using MusterAg.Monitoring.Client.Models;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class LocationEFRepository
+
+    public class LocationEFRepository : ILocationRepository
     {
 
         public long Count()

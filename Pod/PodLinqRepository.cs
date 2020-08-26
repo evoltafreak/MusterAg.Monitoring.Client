@@ -5,7 +5,7 @@ using MusterAg.Monitoring.Client.Model;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class PodLinqRepository : BaseLinqRepository<Pod>, IPodRepository
+    public class PodLinqRepository : BaseLinqRepository<Pod>
     {
         public PodLinqRepository(string connectionString)
         {

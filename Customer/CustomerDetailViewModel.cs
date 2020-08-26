@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows;
 using MusterAg.Monitoring.Client.Helper;
 using MusterAg.Monitoring.Client.Models;
@@ -11,21 +9,21 @@ using MusterAg.Monitoring.Client.Repository;
 
 namespace MusterAg.Monitoring.Client.Customer
 {
-    public class CustomerDetailViewModel : INotifyPropertyChanged
+    public class CustomerDetailViewModel : INotifyPropertyChanged, ICustomerDetailViewModel
     {
 
         public Models.Customer Customer { get; set; }
         public ObservableCollection<string> GenderList { get; set; }
         public ObservableCollection<Location> LocationList { get; set; }
-        public ObservableCollection<Models.Customer> CustomerList { get; set; }
-        private readonly CustomerEFRepository _customerRepository;
-        private readonly LocationEFRepository _locationRepository;
+        
+        private readonly ICustomerRepository _customerRepository;
+        private readonly ILocationRepository _locationRepository;
 
-        public CustomerDetailViewModel()
+        public CustomerDetailViewModel(ICustomerRepository customerRepository, ILocationRepository locationRepository)
         {
             Customer = new Models.Customer();
-            _customerRepository = new CustomerEFRepository();
-            _locationRepository = new LocationEFRepository();
+            _customerRepository = customerRepository;
+            _locationRepository = locationRepository;
 
             GenderList = new ObservableCollection<string>(new List<string>{"M", "F"});
             OnPropertyChanged(this, nameof(GenderList));

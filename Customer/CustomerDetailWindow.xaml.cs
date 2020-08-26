@@ -7,31 +7,25 @@ namespace MusterAg.Monitoring.Client.Customer
 {
     public partial class CustomerDetailWindow : Window
     {
-        public CustomerDetailViewModel CustomerDetailViewModel { get; set; }
-        public CustomerDetailWindow()
+        public readonly ICustomerDetailViewModel _customerDetailViewModel;
+        public Models.Customer Customer { get; set; }
+        public CustomerDetailWindow(ICustomerDetailViewModel customerDetailViewModel)
         {
             InitializeComponent();
-            CustomerDetailViewModel = new CustomerDetailViewModel();
-            DataContext = CustomerDetailViewModel;
-        }
-        
-        public CustomerDetailWindow(Models.Customer customer)
-        {
-            InitializeComponent();
-            CustomerDetailViewModel = new CustomerDetailViewModel();
-            DataContext = CustomerDetailViewModel;
-            CustomerDetailViewModel.Customer = customer;
+            _customerDetailViewModel = customerDetailViewModel;
+            _customerDetailViewModel.Customer = Customer;
+            DataContext = _customerDetailViewModel;
         }
 
-        private void SaveKunde(object sender, RoutedEventArgs e)
+        public void SaveKunde(object sender, RoutedEventArgs e)
         {
-            if (CustomerDetailViewModel.Customer.IdCustomer > 0)
+            if (_customerDetailViewModel.Customer.IdCustomer > 0)
             {
-                CustomerDetailViewModel.UpdateCustomer();
+                _customerDetailViewModel.UpdateCustomer();
             }
             else
             {
-                CustomerDetailViewModel.CreateCustomer();
+                _customerDetailViewModel.CreateCustomer();
             }
             Close();
         }
@@ -40,7 +34,7 @@ namespace MusterAg.Monitoring.Client.Customer
         {
             try
             {
-                CustomerDetailViewModel.Customer.FidLocation = ((Location) selectionChangedEventArgs.AddedItems[0]).IdLocation;
+                _customerDetailViewModel.Customer.FidLocation = ((Location) selectionChangedEventArgs.AddedItems[0]).IdLocation;
             }
             catch (Exception ex)
             {
@@ -52,7 +46,7 @@ namespace MusterAg.Monitoring.Client.Customer
         {
             try
             {
-                CustomerDetailViewModel.Customer.Gender = ((string) selectionChangedEventArgs.AddedItems[0]);
+                _customerDetailViewModel.Customer.Gender = ((string) selectionChangedEventArgs.AddedItems[0]);
             }
             catch (Exception ex)
             {
@@ -64,7 +58,7 @@ namespace MusterAg.Monitoring.Client.Customer
         {
             try
             {
-                CustomerDetailViewModel.Customer.Birthdate = ((DateTime) selectionChangedEventArgs.AddedItems[0]);
+                _customerDetailViewModel.Customer.Birthdate = ((DateTime) selectionChangedEventArgs.AddedItems[0]);
             }
             catch (Exception ex)
             {
@@ -72,12 +66,12 @@ namespace MusterAg.Monitoring.Client.Customer
             }
         }
 
-        private void SetPassword(object sender, RoutedEventArgs e)
+        public void SetPassword(object sender, RoutedEventArgs e)
         {
             try
             {
                 PasswordBox pb = (PasswordBox) sender;
-                CustomerDetailViewModel.Customer.Password = pb.Password;
+                _customerDetailViewModel.Customer.Password = pb.Password;
             }
             catch (Exception ex)
             {

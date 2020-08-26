@@ -4,8 +4,7 @@ using MusterAg.Monitoring.Client.Models;
 
 namespace MusterAg.Monitoring.Client.Customer
 {
-    public class CustomerEFRepository
-    {
+    public class CustomerEFRepository : ICustomerRepository {
 
         public List<Models.Customer> ReadCustomerList()
         {

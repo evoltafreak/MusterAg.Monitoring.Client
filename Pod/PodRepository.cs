@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class PodRepository : BaseRepository<Pod>, IPodRepository
+    public class PodRepository : BaseRepository<Pod>
     {
         public PodRepository(string connectionString)
         {

@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class LogLinqRepository : BaseLinqRepository<Log>, ILogRepository
+    public class LogLinqRepository : BaseLinqRepository<Log>
     {
         public LogLinqRepository(string connectionString)
         {

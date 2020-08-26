@@ -7,24 +7,24 @@ namespace MusterAg.Monitoring.Client.View
 {
     public partial class LogWindow : Window
     {
-        public LogViewModel LogViewModel { get; set; }
+        private readonly ILogViewModel _logViewModel;
         
-        public LogWindow()
+        public LogWindow(ILogViewModel logViewModel)
         {
             InitializeComponent();
-            LogViewModel = new LogViewModel();
-            DataContext = LogViewModel;
+            _logViewModel = logViewModel;
+            DataContext = _logViewModel;
         }
 
         public void AddLog(object sender, RoutedEventArgs routedEventArgs)
         {
             try
             {
-                if (LogViewModel.Log.Message != null &&
-                    LogViewModel.Log.Id != 0 &&
-                    LogViewModel.Log.Severity != "NOT_SET")
+                if (_logViewModel.Log.Message != null &&
+                    _logViewModel.Log.Id != 0 &&
+                    _logViewModel.Log.Severity != "NOT_SET")
                 {
-                    LogViewModel.AddLog();
+                    _logViewModel.AddLog();
                     Close();
                 }
                 else
@@ -45,11 +45,11 @@ namespace MusterAg.Monitoring.Client.View
                 ComboBox cmb = (ComboBox) sender;
                 if (cmb.Name == "CmbPodList")
                 {
-                    LogViewModel.Log.Id = ((Pod) selectionChangedEventArgs.AddedItems[0]).IdPod;
+                    _logViewModel.Log.Id = ((Pod) selectionChangedEventArgs.AddedItems[0]).IdPod;
                 }
                 else if (cmb.Name == "CmbSeverityList")
                 {
-                    LogViewModel.Log.Severity = ((Severity) selectionChangedEventArgs.AddedItems[0]).Severity1;
+                    _logViewModel.Log.Severity = ((Severity) selectionChangedEventArgs.AddedItems[0]).Severity1;
                 }
             }
             catch (Exception ex)

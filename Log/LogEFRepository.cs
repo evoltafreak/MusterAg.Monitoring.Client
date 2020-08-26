@@ -7,7 +7,7 @@ using MusterAg.Monitoring.Client.Models;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class LogEFRepository
+    public class LogEFRepository : ILogRepository
     {
 
         public List<VLogentries> ReadLogList()

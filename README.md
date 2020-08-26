@@ -6,6 +6,7 @@
 
 ## Versions / Releases
 ### Programming Advanced
+[3.3.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/3.3.0) - Testat Regular Expressions   
 [3.2.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/3.2.0) - Testat Regular Expressions   
 [2.2.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.2.0) - Testat LINQ  
 [2.1.0](https://github.com/evoltafreak/MusterAg.Monitoring.Client/releases/tag/2.1.0) - Testat Generics  

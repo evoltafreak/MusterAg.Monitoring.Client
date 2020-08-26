@@ -6,7 +6,7 @@ using MusterAg.Monitoring.Client.Model;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class SeverityLinqRepository : BaseLinqRepository<SeverityEntity>, ISeverityRepository
+    public class SeverityLinqRepository : BaseLinqRepository<SeverityEntity>
     {
         public SeverityLinqRepository(string connectionString)
         {

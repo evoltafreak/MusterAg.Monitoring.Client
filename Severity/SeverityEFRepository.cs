@@ -4,7 +4,7 @@ using MusterAg.Monitoring.Client.Models;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class SeverityEFRepository
+    public class SeverityEFRepository : ISeverityRepository
     {
 
         public List<Severity> ReadSeverityList()

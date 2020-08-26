@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using MusterAg.Monitoring.Client.Model;
+using MusterAg.Monitoring.Client.Models;
 using MySql.Data.MySqlClient;
+using Severity = MusterAg.Monitoring.Client.Model.Severity;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class LogRepository : BaseRepository<Log>, ILogRepository
+    public class LogRepository : BaseRepository<Log>
     {
         public LogRepository(string connectionString)
         {

@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;
 
 namespace MusterAg.Monitoring.Client.Repository
 {
-    public class LocationRepository : BaseRepository<Location>, ILocationRepository
+    public class LocationRepository : BaseRepository<Location>
     {
         
         public LocationRepository(string connectionString)
